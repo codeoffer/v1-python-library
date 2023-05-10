@@ -1,4 +1,7 @@
 import requests
+import urllib3
+
+urllib3.disable_warnings()
 
 
 class Request:
@@ -21,7 +24,13 @@ class Response:
 class Controller:
     @staticmethod
     def sendrequest(request):
-        response = requests.request(request.method, request.url, data=request.data, headers=request.headers)
+        if request.method == "GET" or request.method == "DELETE":
+            if request.data is not None:
+                request.url += f"?{request.data}"
+                request.data = None
+
+        response = requests.request(request.method, request.url, data=request.data, headers=request.headers,
+                                    verify=False)
         json_data = response.json()
         code = json_data["code"]
         message = json_data["message"]
