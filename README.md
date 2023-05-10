@@ -1,6 +1,6 @@
 # CodeOffer Python Package
 
-CodeOffer is a Python package that provides an API wrapper for the public CodeOffer API. The package simplifies authentication and management of in-app assets for developers who use the CodeOffer API in their applications.
+This is a Python package that provides an API wrapper for the public CodeOffer API. The package simplifies authentication and management of in-app assets for developers who use the CodeOffer API in their applications.
 
 ## Installation
 
@@ -36,7 +36,8 @@ Right after that call the `token.wait_for_confirmation()` method, this method wi
 To return the current logged in user you need to import the `user` class from `codeoffer`
 
 ```py
-from codeoffer import user
+
+from src.codeoffer import user
 ```
 
 Then you can return the current user by using the `get_user` method and passing the token as a parameter:
@@ -78,21 +79,22 @@ for asset in assets:
 ```
 
 #### Complete Example
+
 ```py
-from codeoffer import oauth  
-from codeoffer import app  
-from codeoffer import user  
-      
-session = oauth.Session("10aa641e562bdd82d2f8449d")  
-token = session.create_session_token()  
-token.get_login_link()  
-token.wait_for_confirmation()  
-user = user.User.get_user(token)  
-print(f"Hey {user.username}")  
-app = app.App.by_session_token(token)  
-assets = app.get_asset_directory()  
-for asset in assets:  
-	print(f"{asset.name}: {asset.access}")
+from codeoffer import oauth
+from codeoffer import app
+from src.codeoffer import user
+
+session = oauth.Session("10aa641e562bdd82d2f8449d")
+token = session.create_session_token()
+token.get_login_link()
+token.wait_for_confirmation()
+user = user.User.get_user(token)
+print(f"Hey {user.username}")
+app = app.App.by_session_token(token)
+assets = app.get_asset_directory()
+for asset in assets:
+    print(f"{asset.name}: {asset.access}")
 ```
 
 ## License
