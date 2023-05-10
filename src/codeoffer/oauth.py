@@ -1,7 +1,7 @@
 import json
 
-from codeoffer import api
-from codeoffer import utilities
+from src.codeoffer import api
+from src.codeoffer import utilities
 
 
 class SessionToken:

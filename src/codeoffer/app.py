@@ -1,6 +1,6 @@
-from codeoffer import api
-from codeoffer import utilities
-from codeoffer import exceptions
+from src.codeoffer import api
+from src.codeoffer import utilities
+from src.codeoffer import exceptions
 import base64
 
 
@@ -25,6 +25,20 @@ class Asset:
 class AssetDirectory(list):
     def __init__(self, *args):
         super().__init__(*args)
+
+    def get_asset_by_uuid(self, uuid):
+        index = next((i for i, asset in enumerate(self) if asset.uuid == uuid), None)
+        if index is None:
+            raise exceptions.AssetNotFoundException("Asset not found.")
+
+        return self[index]
+
+    def get_asset_by_identifier(self, identifier):
+        index = next((i for i, asset in enumerate(self) if asset.identifier == identifier), None)
+        if index is None:
+            raise exceptions.AssetNotFoundException("Asset not found.")
+
+        return self[index]
 
 
 class App:
