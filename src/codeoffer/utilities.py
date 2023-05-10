@@ -1,4 +1,4 @@
-from src.codeoffer import exceptions
+from codeoffer import exceptions
 
 
 class Utilities:

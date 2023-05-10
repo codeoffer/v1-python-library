@@ -1,1 +1,1 @@
-from src.codeoffer import oauth
+from codeoffer import oauth

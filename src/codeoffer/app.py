@@ -1,6 +1,6 @@
-from src.codeoffer import api
-from src.codeoffer import utilities
-from src.codeoffer import exceptions
+from codeoffer import api
+from codeoffer import utilities
+from codeoffer import exceptions
 import base64
 
 
