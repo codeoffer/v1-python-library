@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "codeoffer"
-version = "0.9.0"
+version = "1.0.0"
 authors = [
   { name="CodeOffer", email="contact@codeoffer.net" },
 ]
@@ -19,3 +19,6 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/codeoffer/v1-python-library"
 "Bug Tracker" = "https://github.com/codeoffer/v1-python-library/issues"
+
+[tool.poetry.dependencies]
+requests = "^2.30.0"

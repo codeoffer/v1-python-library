@@ -13,7 +13,7 @@ class User:
     @staticmethod
     def get_user(token):
         response = api.Controller.sendrequest(
-            api.Request("GET", "https://dev-api.codeoffer.net/v1/oauth/session/user", headers={"OAuth-Session": token.token}))
+            api.Request("GET", "https://api.codeoffer.net/v1/oauth/session/user", headers={"OAuth-Session": token.token}))
 
         utilities.Utilities.handle_response(response)
         return User(response.data["uuid"], response.data["username"], response.data["profile_picture"],

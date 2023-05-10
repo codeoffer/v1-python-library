@@ -15,7 +15,7 @@ class Asset:
         self.session_token = None
 
     def get_value(self):
-        response = api.Controller.sendrequest(api.Request("GET", "https://dev-api.codeoffer.net/v1/app/asset",
+        response = api.Controller.sendrequest(api.Request("GET", "https://api.codeoffer.net/v1/app/asset",
                                                           f"uuid={self.uuid}",
                                                           {"OAuth-Session": self.session_token.token}))
         utilities.Utilities.handle_response(response)
@@ -40,7 +40,7 @@ class App:
         if self.session_token.account is None:
             raise exceptions.UnauthorizedException("The user most be logged in to perform this action")
 
-        response = api.Controller.sendrequest(api.Request("GET", "https://dev-api.codeoffer.net/v1/app/assets",
+        response = api.Controller.sendrequest(api.Request("GET", "https://api.codeoffer.net/v1/app/assets",
                                                           f"uuid={self.app_id}",
                                                           {"OAuth-Session": self.session_token.token}))
         utilities.Utilities.handle_response(response)

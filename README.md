@@ -37,7 +37,7 @@ To return the current logged in user you need to import the `user` class from `c
 
 ```py
 
-from src.codeoffer import user
+from codeoffer import user
 ```
 
 Then you can return the current user by using the `get_user` method and passing the token as a parameter:
@@ -83,7 +83,7 @@ for asset in assets:
 ```py
 from codeoffer import oauth
 from codeoffer import app
-from src.codeoffer import user
+from codeoffer import user
 
 session = oauth.Session("10aa641e562bdd82d2f8449d")
 token = session.create_session_token()

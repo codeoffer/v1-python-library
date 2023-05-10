@@ -13,13 +13,13 @@ class SessionToken:
 
     def wait_for_confirmation(self):
         response = api.Controller.sendrequest(
-            api.Request("GET", "https://dev-api.codeoffer.net/v1/oauth/session/state", f"session={self.token}"))
+            api.Request("GET", "https://api.codeoffer.net/v1/oauth/session/state", f"session={self.token}"))
         utilities.Utilities.handle_response(response)
         self.account = response.data["account"]
         return True
 
     def get_login_link(self):
-        return f"http://localhost/oauth/login?session={self.token}"
+        return f"https://codeoffer.net/oauth/login?session={self.token}"
 
 
 class SessionTokenOverview:
@@ -45,7 +45,7 @@ class SessionTokenOverview:
 
 def get_session_token(token):
     response = api.Controller.sendrequest(
-        api.Request("GET", "https://dev-api.codeoffer.net/v1/oauth/session", f"session={token}&validate=false"))
+        api.Request("GET", "https://api.codeoffer.net/v1/oauth/session", f"session={token}&validate=false"))
     utilities.Utilities.handle_response(response)
     vendor = SessionTokenOverview.App.Vendor(response.data["app"]["vendor"]["uuid"],
                                              response.data["app"]["vendor"]["username"],
@@ -62,7 +62,7 @@ class Session:
 
     def create_session_token(self):
         response = api.Controller.sendrequest(
-            api.Request("PUT", "https://dev-api.codeoffer.net/v1/oauth/session", json.dumps({
+            api.Request("PUT", "https://api.codeoffer.net/v1/oauth/session", json.dumps({
                 "app": self.app_id
             })))
         utilities.Utilities.handle_response(response)
